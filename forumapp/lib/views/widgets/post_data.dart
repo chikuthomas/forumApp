@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_lorem/flutter_lorem.dart';
+import 'package:forumapp/models/post_model.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class post_data extends StatelessWidget {
   const post_data({
-    super.key,
+    super.key, required this.post,
   });
 
+  final PostModel post;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,10 +22,11 @@ class post_data extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Super Admin",
+            post.user!.name!,
             style: GoogleFonts.poppins(),
           ),
-          Text("Admin@gmail.com",
+          Text(
+              post.user!.email!,
               style: GoogleFonts.poppins(
                 fontSize: 8,
               )),
@@ -32,7 +35,8 @@ class post_data extends StatelessWidget {
           ),
           //making use of lorem ipsum package
           Text(
-            lorem(paragraphs: 1, words: 30),
+            //lorem(paragraphs: 1, words: 30),
+            post.content!,
           ),
           Row(
             children: [
